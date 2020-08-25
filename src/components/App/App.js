@@ -1,6 +1,6 @@
 //Core
 import React from 'react';
-import { MainPage, CartPage } from 'pages';
+import { MainPage, CartPage, ItemPage } from 'pages';
 import { Route, Switch } from 'react-router-dom';
 //Components
 import AppHeader from '../AppHeader';
@@ -15,8 +15,9 @@ const App = () => {
 			<AppHeader total={50} />
 
 			<Switch>
-				<Route path={router.menu} exact component={MainPage} />
+				<Route path={router.home} exact component={MainPage} />
 				<Route path={router.cart} component={CartPage} />
+				<Route path={router.menuItem} component={ItemPage} />
 				<Route exact component={MainPage} />
 			</Switch>
 		</div>

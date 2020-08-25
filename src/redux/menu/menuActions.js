@@ -1,21 +1,21 @@
 //Redux
 import actionsType from './menuActionsType';
 
-const fetchMenu = newMenu => ({
-	type: actionsType.FETCH,
-	payload: [...newMenu],
+const menuLoaded = newMenu => ({
+	type: actionsType.LOADED,
+	payload: newMenu,
 });
 
-const setLoading = () => ({
-	type: actionsType.LOADING,
+const menuRequested = () => ({
+	type: actionsType.REQUESTED,
 });
 
-const setError = () => ({
+const menuError = () => ({
 	type: actionsType.ERROR,
 });
 
 export default {
-	fetchMenu,
-	setLoading,
-	setError,
+	menuLoaded,
+	menuRequested,
+	menuError,
 };

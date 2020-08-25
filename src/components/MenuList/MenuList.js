@@ -14,24 +14,23 @@ import './MenuList.scss';
 
 class MenuList extends Component {
 	componentDidMount() {
-		const { RestoService, fetchMenu, setLoading, setError } = this.props;
+		const { RestoService, menuLoaded, menuError, menuRequested } = this.props;
 
-		setLoading();
+		menuRequested();
 
 		RestoService.getMenuItems()
-			.then(res => fetchMenu(res))
-			.catch(error => setError())
-			.finally(setLoading);
+			.then(res => menuLoaded(res))
+			.catch(error => menuError());
 	}
 
 	render() {
-		const { menuItems, isLoading, hasError } = this.props;
+		const { menuItems, loading, error } = this.props;
 
-		if (hasError) {
+		if (error) {
 			return <Error />;
 		}
 
-		if (isLoading) {
+		if (loading) {
 			return <Spinner />;
 		}
 
@@ -47,14 +46,14 @@ class MenuList extends Component {
 
 const mapStateToProps = state => ({
 	menuItems: state.menu.items,
-	isLoading: state.menu.isLoading,
-	hasError: state.menu.hasError,
+	loading: state.menu.loading,
+	error: state.menu.error,
 });
 
 const mapDispatchToProps = {
-	fetchMenu: menuActions.fetchMenu,
-	setLoading: menuActions.setLoading,
-	setError: menuActions.setError,
+	menuLoaded: menuActions.menuLoaded,
+	menuRequested: menuActions.menuRequested,
+	menuError: menuActions.menuError,
 };
 
 export default withRestoService()(

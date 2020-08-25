@@ -1,4 +1,6 @@
 export default {
-	menu: '/',
+	home: '/',
 	cart: '/cart',
+	menu: '/menu',
+	menuItem: '/menu/:itemId',
 };

@@ -13,7 +13,7 @@ const AppHeader = ({ total }) => {
 		<header className="header">
 			<NavLink
 				exact
-				to={router.menu}
+				to={router.home}
 				className="header__link"
 				activeClassName="header__link-active"
 			>

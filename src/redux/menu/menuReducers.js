@@ -1,37 +1,36 @@
-//Core
-import { combineReducers } from 'redux';
 //Redux
 import actionsType from './menuActionsType';
 
-const items = (state = [], action) => {
-	switch (action.type) {
-		case actionsType.FETCH:
-			return action.payload;
-		default:
-			return state;
-	}
+const initialState = {
+	items: [],
+	loading: true,
+	error: false,
 };
 
-const isLoading = (state = false, action) => {
+const menu = (state = initialState, action) => {
+	console.log(state);
 	switch (action.type) {
-		case actionsType.LOADING:
-			return !state;
-		default:
-			return state;
-	}
-};
-
-const hasError = (state = false, action) => {
-	switch (action.type) {
+		case actionsType.LOADED:
+			return {
+				items: action.payload,
+				loading: false,
+				error: false,
+			};
+		case actionsType.REQUESTED:
+			return {
+				items: state.items,
+				loading: true,
+				error: false,
+			};
 		case actionsType.ERROR:
-			return true;
+			return {
+				items: state.items,
+				loading: true,
+				error: true,
+			};
 		default:
 			return state;
 	}
 };
 
-export default combineReducers({
-	items,
-	isLoading,
-	hasError,
-});
+export default menu;
