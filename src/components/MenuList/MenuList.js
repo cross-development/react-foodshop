@@ -24,7 +24,7 @@ class MenuList extends Component {
 	}
 
 	render() {
-		const { menuItems, loading, error } = this.props;
+		const { menuItems, loading, error, addedToCart } = this.props;
 
 		if (error) {
 			return <Error />;
@@ -37,7 +37,11 @@ class MenuList extends Component {
 		return (
 			<ul className="menu__list">
 				{menuItems.map(menuItem => (
-					<MenuListItem key={menuItem.id} menuItem={menuItem} />
+					<MenuListItem
+						key={menuItem.id}
+						menuItem={menuItem}
+						onAddToCart={() => addedToCart(menuItem.id)}
+					/>
 				))}
 			</ul>
 		);
@@ -45,7 +49,7 @@ class MenuList extends Component {
 }
 
 const mapStateToProps = state => ({
-	menuItems: state.menu.items,
+	menuItems: state.menu.menuItems,
 	loading: state.menu.loading,
 	error: state.menu.error,
 });
@@ -54,6 +58,7 @@ const mapDispatchToProps = {
 	menuLoaded: menuActions.menuLoaded,
 	menuRequested: menuActions.menuRequested,
 	menuError: menuActions.menuError,
+	addedToCart: menuActions.addedToCart,
 };
 
 export default withRestoService()(

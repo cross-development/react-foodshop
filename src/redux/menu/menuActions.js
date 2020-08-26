@@ -14,8 +14,20 @@ const menuError = () => ({
 	type: actionsType.ERROR,
 });
 
+const addedToCart = id => ({
+	type: actionsType.ADD_TO_CART,
+	payload: id,
+});
+
+const removeFromCart = id => ({
+	type: actionsType.REMOVE_FROM_CART,
+	payload: id,
+});
+
 export default {
 	menuLoaded,
 	menuRequested,
 	menuError,
+	addedToCart,
+	removeFromCart,
 };

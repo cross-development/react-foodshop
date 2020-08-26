@@ -6,7 +6,7 @@ import router from 'router';
 //Style
 import './MenuListItem.scss';
 
-const MenuListItem = ({ menuItem }) => {
+const MenuListItem = ({ menuItem, onAddToCart }) => {
 	const { id, title, price, url, category } = menuItem;
 
 	return (
@@ -20,9 +20,11 @@ const MenuListItem = ({ menuItem }) => {
 				<p className="menu__price">
 					Price: <span>{price}$</span>
 				</p>
-				<button className="menu__btn">Add to cart</button>
-				<span className={`menu__category_Img ${category}`}></span>
 			</Link>
+			<button onClick={() => onAddToCart()} className="menu__btn">
+				Add to cart
+			</button>
+			<span className={`menu__category_Img ${category}`}></span>
 		</li>
 	);
 };

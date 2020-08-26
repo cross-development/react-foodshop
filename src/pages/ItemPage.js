@@ -23,7 +23,7 @@ class ItemPage extends Component {
 	}
 
 	render() {
-		const { menuItems, loading, match } = this.props;
+		const { menuItems, loading, match, addedToCart } = this.props;
 
 		if (loading) {
 			return <Spinner />;
@@ -33,12 +33,12 @@ class ItemPage extends Component {
 			({ id }) => Number(id) === Number(match.params.itemId),
 		);
 
-		return <ItemDetails {...item} />;
+		return <ItemDetails {...item} onAddToCart={() => addedToCart(item.id)} />;
 	}
 }
 
 const mapStateToProps = state => ({
-	menuItems: state.menu.items,
+	menuItems: state.menu.menuItems,
 	loading: state.menu.loading,
 	error: state.menu.error,
 });
@@ -47,6 +47,7 @@ const mapDispatchToProps = {
 	menuLoaded: menuActions.menuLoaded,
 	menuRequested: menuActions.menuRequested,
 	menuError: menuActions.menuError,
+	addedToCart: menuActions.addedToCart,
 };
 
 export default withRestoService()(
