@@ -1,3 +1,1 @@
-import MenuList from './MenuList';
-
-export default MenuList;
+export { default } from './MenuList';

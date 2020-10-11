@@ -6,8 +6,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 //Components
 import App from 'components/App';
 import ErrorBoundary from 'components/ErrorBoundary';
-import RestoService from 'services/restoAPI';
 import RestoServiceContext from 'components/RestoServiceContext';
+//Services
+import RestoService from 'services/restoAPI';
 //Redux
 import store from 'redux/store';
 //Style

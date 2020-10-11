@@ -1,10 +1,11 @@
 //Core
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 //Components
-import MenuListItem from '../MenuListItem';
-import Spinner from '../Spinner';
 import Error from '../Error';
+import Spinner from '../Spinner';
+import MenuListItem from '../MenuListItem';
 //HOC
 import withRestoService from '../hoc';
 //Redux
@@ -12,53 +13,73 @@ import menuActions from 'redux/menu/menuActions';
 //Style
 import './MenuList.scss';
 
-class MenuList extends Component {
-	componentDidMount() {
-		const { RestoService, menuLoaded, menuError, menuRequested } = this.props;
+const MenuList = props => {
+	const {
+		error,
+		loading,
+		menuItems,
+		menuError,
+		menuLoaded,
+		addedToCart,
+		RestoService,
+		menuRequested,
+	} = props;
 
+	useEffect(() => {
 		menuRequested();
 
 		RestoService.getMenuItems()
 			.then(res => menuLoaded(res))
 			.catch(error => menuError());
-	}
+	}, [menuRequested, RestoService, menuLoaded, menuError]);
 
-	render() {
-		const { menuItems, loading, error, addedToCart } = this.props;
+	if (error) return <Error />;
 
-		if (error) {
-			return <Error />;
-		}
+	if (loading) return <Spinner />;
 
-		if (loading) {
-			return <Spinner />;
-		}
+	return (
+		<ul className="menu__list">
+			{menuItems.map(menuItem => (
+				<MenuListItem
+					key={menuItem.id}
+					menuItem={menuItem}
+					onAddToCart={() => addedToCart(menuItem.id)}
+				/>
+			))}
+		</ul>
+	);
+};
 
-		return (
-			<ul className="menu__list">
-				{menuItems.map(menuItem => (
-					<MenuListItem
-						key={menuItem.id}
-						menuItem={menuItem}
-						onAddToCart={() => addedToCart(menuItem.id)}
-					/>
-				))}
-			</ul>
-		);
-	}
-}
+MenuList.propTypes = {
+	error: PropTypes.bool.isRequired,
+	loading: PropTypes.bool.isRequired,
+	menuItems: PropTypes.arrayOf(
+		PropTypes.exact({
+			id: PropTypes.number.isRequired,
+			url: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			price: PropTypes.number.isRequired,
+			category: PropTypes.string.isRequired,
+		}).isRequired,
+	).isRequired,
+	menuError: PropTypes.func.isRequired,
+	menuLoaded: PropTypes.func.isRequired,
+	addedToCart: PropTypes.func.isRequired,
+	menuRequested: PropTypes.func.isRequired,
+	RestoService: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
-	menuItems: state.menu.menuItems,
-	loading: state.menu.loading,
 	error: state.menu.error,
+	loading: state.menu.loading,
+	menuItems: state.menu.menuItems,
 });
 
 const mapDispatchToProps = {
-	menuLoaded: menuActions.menuLoaded,
-	menuRequested: menuActions.menuRequested,
 	menuError: menuActions.menuError,
+	menuLoaded: menuActions.menuLoaded,
 	addedToCart: menuActions.addedToCart,
+	menuRequested: menuActions.menuRequested,
 };
 
 export default withRestoService()(

@@ -3,6 +3,13 @@
 	margin: 0;
 	padding: 0;
 }
+
 body {
 	font-family: 'Roboto', sans-serif;
+	background: url('./assets/food-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
 }
+

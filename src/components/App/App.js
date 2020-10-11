@@ -6,22 +6,18 @@ import { Route, Switch } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 //Router
 import router from 'router';
-//Style
-import './App.scss';
 
-const App = () => {
-	return (
-		<div className="app">
-			<AppHeader total={50} />
+const App = () => (
+	<>
+		<AppHeader />
 
-			<Switch>
-				<Route path={router.home} exact component={MainPage} />
-				<Route path={router.cart} component={CartPage} />
-				<Route path={router.menuItem} component={ItemPage} />
-				<Route exact component={MainPage} />
-			</Switch>
-		</div>
-	);
-};
+		<Switch>
+			<Route path={router.home} exact component={MainPage} />
+			<Route path={router.cart} component={CartPage} />
+			<Route path={router.menuItem} component={ItemPage} />
+			<Route exact component={MainPage} />
+		</Switch>
+	</>
+);
 
 export default App;

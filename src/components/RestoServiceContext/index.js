@@ -1,3 +1,1 @@
-import RestoServiceContext from './RestoServiceContext';
-
-export default RestoServiceContext;
+export { default } from './RestoServiceContext';

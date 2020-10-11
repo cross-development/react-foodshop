@@ -17,10 +17,8 @@ export default class RestoService {
 
 	async getItem(itemId) {
 		const res = await this.getResource('/menu/');
-		const item = res.find(({ id }) => {
-			console.log(`el.id: ${id}, id: ${itemId}`);
-			return id === Number(itemId);
-		});
+
+		const item = res.find(({ id }) => id === Number(itemId));
 
 		return item;
 	}

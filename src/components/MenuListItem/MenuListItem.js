@@ -21,6 +21,7 @@ const MenuListItem = ({ menuItem, onAddToCart }) => {
 					Price: <span>{price}$</span>
 				</p>
 			</Link>
+
 			<button onClick={() => onAddToCart()} className="menu__btn">
 				Add to cart
 			</button>

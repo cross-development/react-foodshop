@@ -1,6 +1,7 @@
 //Core
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 //Assets
 import cartIcon from 'assets/shopping-cart-solid.svg';
 //Router
@@ -8,7 +9,9 @@ import router from 'router';
 //Style
 import './AppHeader.scss';
 
-const AppHeader = ({ total }) => {
+const AppHeader = ({ cartItems }) => {
+	const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+
 	return (
 		<header className="header">
 			<NavLink
@@ -32,4 +35,8 @@ const AppHeader = ({ total }) => {
 	);
 };
 
-export default AppHeader;
+const mapStateToProps = state => ({
+	cartItems: state.menu.cartItems,
+});
+
+export default connect(mapStateToProps)(AppHeader);

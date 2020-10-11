@@ -25,9 +25,9 @@ const removeFromCart = id => ({
 });
 
 export default {
-	menuLoaded,
-	menuRequested,
 	menuError,
+	menuLoaded,
 	addedToCart,
+	menuRequested,
 	removeFromCart,
 };
