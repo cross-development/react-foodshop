@@ -1,13 +1,13 @@
 //Core
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Component
 import Spinner from 'components/Spinner';
 import ItemDetails from 'components/ItemDetails';
 //HOC
 import withRestoService from 'components/hoc';
 //Redux
+import { connect } from 'react-redux';
 import menuActions from 'redux/menu/menuActions';
 
 const ItemPage = props => {

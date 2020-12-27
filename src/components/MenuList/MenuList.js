@@ -1,7 +1,6 @@
 //Core
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 //Components
 import Error from '../Error';
 import Spinner from '../Spinner';
@@ -9,9 +8,10 @@ import MenuListItem from '../MenuListItem';
 //HOC
 import withRestoService from '../hoc';
 //Redux
+import { connect } from 'react-redux';
 import menuActions from 'redux/menu/menuActions';
 //Style
-import './MenuList.scss';
+import styles from './MenuList.module.css';
 
 const MenuList = props => {
 	const {
@@ -38,7 +38,7 @@ const MenuList = props => {
 	if (loading) return <Spinner />;
 
 	return (
-		<ul className="menu__list">
+		<ul className={styles.menu__list}>
 			{menuItems.map(menuItem => (
 				<MenuListItem
 					key={menuItem.id}

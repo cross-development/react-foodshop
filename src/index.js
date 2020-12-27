@@ -1,18 +1,18 @@
 //Core
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 //Components
 import App from 'components/App';
 import ErrorBoundary from 'components/ErrorBoundary';
 import RestoServiceContext from 'components/RestoServiceContext';
+//Redux
+import { Provider } from 'react-redux';
+import store from 'redux/store';
 //Services
 import RestoService from 'services/restoAPI';
-//Redux
-import store from 'redux/store';
 //Style
-import 'index.scss';
+import 'index.css';
 
 const restoService = new RestoService();
 

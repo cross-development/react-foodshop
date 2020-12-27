@@ -1,7 +1,8 @@
 //Core
 import React from 'react';
-import { MainPage, CartPage, ItemPage } from 'pages';
 import { Route, Switch } from 'react-router-dom';
+//Pages
+import { MainPage, CartPage, ItemPage } from 'pages';
 //Components
 import AppHeader from '../AppHeader';
 //Router

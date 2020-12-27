@@ -1,0 +1,78 @@
+.menu__item {
+	width: 280px;
+	min-height: 400px;
+	background-color: #fff;
+	box-shadow: 5px 5px 45px rgba(256, 256, 256, 0.1);
+	border-radius: 8px;
+	padding: 20px;
+	margin-right: 40px;
+	margin-bottom: 40px;
+}
+
+.menu__link {
+	text-decoration: none;
+	color: #212121;
+}
+
+.menu__title {
+	font-size: 22px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.menu__img {
+	width: calc(100% + 40px);
+	transform: translateX(-20px);
+	height: 240px;
+	object-fit: cover;
+	margin-bottom: 20px;
+}
+
+.menu__category,
+.menu__price {
+	font-size: 18px;
+	font-weight: 300;
+	margin-bottom: 10px;
+}
+
+.menu__category span,
+.menu__price span {
+	font-weight: 700;
+}
+
+.menu__btn {
+	width: 150px;
+	height: 40px;
+	border: none;
+	background-color: #29a745;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.menu__category_Img {
+	position: absolute;
+	content: '';
+	bottom: 20px;
+	right: 20px;
+	width: 75px;
+	height: 75px;
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.menu__category_Img_pizza {
+	background-image: url('../../assets/Prize-Icon-Pizza.png');
+	width: 70px;
+	height: 70px;
+}
+
+.menu__category_Img_salads {
+	background-image: url('../../assets/d5ce613797b1fd08bdf3e038bfa1d0b2-colorful-salad-cartoon-by-vexels.png');
+}
+
+.menu__category_Img_meat {
+	background-image: url('../../assets/Steak-512.png');
+}
